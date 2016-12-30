@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.start()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /0							controllers.Application.type1(f?="0", s1?="0_1_2", prog?="1")
+GET 	/1				        	controllers.Application.type2(f?="1", s1?="0_2_4", s2?="1_3", prog?="2")
+
+
+
+
+
+
+
+
+
+POST 	/save/*collectionID/*q1/*q2						controllers.Application.saveRecord(collectionID, q1, q2)
+GET  	/id							controllers.Application.seeID()
+GET 	/javascriptRoutes 			controllers.Application.javascriptRoutes
+POST		/test/:cid/:q1/:q2			controllers.Application.saveRecord(cid: String, q1: String, q2:String)

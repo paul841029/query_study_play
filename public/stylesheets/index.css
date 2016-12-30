@@ -1,0 +1,78 @@
+
+
+/* The navigation menu links */
+
+.submissionfield {
+    width: 2000px;
+    height: 50px;
+    border: 1px solid #999999;
+    padding: 5px;
+}
+input[type=submit] {
+    width: 30em;  height: 2em;
+}
+
+
+.main {
+    float: left
+}
+
+input[type="text"]
+{
+    font-size:36px;
+}
+nav{
+    font-size:20px;
+}
+.graphs{
+    float: left;
+
+}
+
+.graphs  *{
+
+    display: inline-block;
+    margin-left: 10px;
+}
+
+body { font: 12px Arial;}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.selected_once {
+    border-radius: 25px;
+    border: 5px solid #73AD21 ;
+    padding: 20px;
+
+}
+
+.selected_twice {
+    border-radius: 25px;
+    box-shadow: 0pt 0pt 10pt 10pt orange;
+    border: 5px solid #73AD21;
+    padding: 20px;
+
+
+
+}
+
+progress{
+	width: 100%;
+    height: 30px;
+}
+
+#progress_text{
+	font-size:20px;
+}
