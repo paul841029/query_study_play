@@ -32,7 +32,7 @@ public class Record  extends Model{
 	
 
 	public static int getID() throws IOException {
-		File read_file = Play.application().getFile("app/models/id.txt");
+		File read_file = Play.application().getFile("conf/id.txt");
 		Scanner sc = new Scanner(read_file);
 		int index = -1;
 		while(sc.hasNextInt()){
@@ -41,7 +41,7 @@ public class Record  extends Model{
 		sc.close();
 		
 		
-		FileWriter write_file = new FileWriter(Play.application().getFile("app/models/id.txt"),false);
+		FileWriter write_file = new FileWriter(Play.application().getFile("conf/id.txt"),false);
 		int nextId = index + 1;
 		write_file.write(Integer.toString(nextId));
 		write_file.flush();
@@ -54,7 +54,7 @@ public class Record  extends Model{
 		DateFormat dateFormate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		String str = dateFormate.format(date)+"	"+Integer.toString(this.id)+"	"+Integer.toString(this.collection_index)+"	q1:"+this.query_s1+"	q2:"+this.query_s2+"\n";
-		FileWriter write_file = new FileWriter(Play.application().getFile("app/models/record.txt"),true);
+		FileWriter write_file = new FileWriter(Play.application().getFile("conf/record.txt"),true);
 		write_file.write(str);
 		write_file.flush();
 		write_file.close();
