@@ -51,7 +51,7 @@ public class Record  extends Model{
 	}
 	
 	public void saveTofile() throws IOException {
-		DateFormat dateFormate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		DateFormat dateFormate = new SimpleDateFormat("yyyy/MM/dd,HH:mm:ss");
 		Date date = new Date();
 		String str = dateFormate.format(date)+"	"+Integer.toString(this.id)+"	"+Integer.toString(this.collection_index)+"	q1:"+this.query_s1+"	q2:"+this.query_s2+"\n";
 		FileWriter write_file = new FileWriter(Play.application().getFile("conf/record.txt"),true);

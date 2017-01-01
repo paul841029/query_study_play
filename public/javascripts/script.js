@@ -11,10 +11,8 @@ var selected_graph = [0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0
                       ];
 var second = 0;
-function testing () {
-    $("#canvas").append("<p>test<p>");
-}
-
+var cID = window.location.href.split("/")[window.location.href.split("/").length-1];
+cID = +cID;
 
 
 function generateGraphs(index) {
@@ -48,7 +46,7 @@ function generateGraphs(index) {
 // Adds the svg canvas
 //var data_lst = ["data1.csv", "data2.csv"]
 
-
+    var attributes = index_attributes[cID];
 
     for (let i = 0; i<15; i++) {
 
@@ -85,6 +83,22 @@ function generateGraphs(index) {
                 svg.append("g")
                     .attr("class", "y axis")
                     .call(yAxis);
+                
+                svg.append("text")
+                	.style("text-anchor","middle")
+                	.attr("transform","translate("+-(4*margin.left/5)+","+(height/2)+")rotate(-90)")
+                	.text(attributes.y);
+                
+                svg.append("text")
+            		.style("text-anchor","middle")
+            		.attr("transform","translate("+(width/2)+","+(height+(margin.bottom))+")")
+            		.text(attributes.x);
+                
+                svg.append("text")
+                .attr("x", width / 2 )
+                .attr("y", 0)
+                .style("text-anchor", "middle")
+                .text(attributes.z_arry[i]);
 
             });
 
@@ -143,7 +157,6 @@ $(document).ready(function() {
         graphs += "\n\n";
         graphs_step2 += "\n\n";
         var footer = "Your queries have been recorded. The page will be redirected to the next collection.";
-        var cID = window.location.href.split("/")[window.location.href.split("/").length-1];
         if(text_step2 === undefined || text_step2 === "undefined")
         	test_step = "";
         
@@ -170,6 +183,7 @@ $(document).ready(function() {
 
 
 (function(){
+	
 	
 })();
 
