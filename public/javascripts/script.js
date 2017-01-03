@@ -13,15 +13,23 @@ var selected_graph = [0, 0, 0, 0, 0,
 var second = 0;
 var cID = window.location.href.split("/")[window.location.href.split("/").length-1];
 cID = +cID;
+var x_name;
+var y_name;
 
 
 function generateGraphs_line(index) {
 
-	var attributes = index_attributes[cID];
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
+	var attributes = index_attributes[0];
 	
     var margin = {top: 30, right: 20, bottom: 30, left: 50},
         width = 400 - margin.left - margin.right,
         height = 220 - margin.top - margin.bottom;
+    
+    x_name = attributes.x;
+	y_name = attributes.y;
 
 // Parse the date / time
 //var parseDate = d3.time.format("%d-%b-%y").parse;
@@ -109,7 +117,12 @@ function generateGraphs_line(index) {
 
 function generateGraphs_scatter(index){
 	
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
 	var attributes = index_attributes[0];
+	x_name = attributes.x;
+	y_name = attributes.y;
 	
 	var margin = {top: 30, right: 20, bottom: 30, left: 50},
     width = 400 - margin.left - margin.right,
@@ -232,6 +245,40 @@ function selectStep2(index){
 
 function checkquery(q1, q2){
 	
+	var message = "Invalid Input: "
+	
+	if(!$("#query1").val()) { 
+		alert(message+"Empty string [query 1]");
+		return 0;
+	}
+	
+	if(second && !$("#query2").val()) {
+		alert(message+"Empty string [query 2]");
+		return 0;
+	}
+	
+	if(!$("#query1").val().toLowerCase().includes(x_name.toLowerCase())) {
+		alert(message+"Name of x-axis missing [query 1]");
+		return 0;
+	}
+	
+	if(!$("#query1").val().toLowerCase().includes(y_name.toLowerCase())) {
+		alert(message+"Name of y-axis missing [query 1]");
+		return 0;
+	}
+	
+	if(second && !$("#query2").val().toLowerCase().includes(x_name.toLowerCase())) {
+		alert(message+"Name of x-axis missing [query 2]");
+		return 0;
+	}
+	
+	if(second && !$("#query2").val().toLowerCase().includes(y_name.toLowerCase())) {
+		alert(message+"Name of y-axis missing [query 2]");
+		return 0;
+	}
+	
+	return 1;
+	
 }
 
 
@@ -254,23 +301,29 @@ $(document).ready(function() {
         graphs += "\n\n";
         graphs_step2 += "\n\n";
         var footer = "Your queries have been recorded. The page will be redirected to the next collection.";
-        if(text_step2 === undefined || text_step2 === "undefined")
-        	test_step = "";
         
-        myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
+        if(checkquery(text, text_step2) == 0) {
+        	event.preventDefault();
+        }
         
-        if(!second)
-            alert(text+graphs+footer);
-        else
-            alert("STEP1:\n"+text+graphs+"STEP2:\n"+text_step2+graphs_step2+footer);
-    	
-        event.preventDefault();
-        
-        var nextpage = parseInt(cID) + 1;
-        if(nextpage > 17)
-        	nextpage = "final";
+        else {
+        	myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
             
-        window.location = "/"+nextpage;
+            if(!second)
+                alert(text+graphs+footer);
+            else
+                alert("STEP1:\n"+text+graphs+"STEP2:\n"+text_step2+graphs_step2+footer);
+        	
+            event.preventDefault();
+            
+            var nextpage = parseInt(cID) + 1;
+            if(nextpage > 17)
+            	nextpage = "final";
+                
+            window.location = "/"+nextpage;
+        }
+        
+        
     });
     
     

@@ -11,7 +11,8 @@ var z_name_0 = ["a", "b", "c", "d", "e",
 var index_attributes = [
     {
 	z_arry:z_name_0,
-	x:"x_name",
-	y:"y_name"}
+	x:"xAxis",
+	y:"yAxis"
+	}
     
 ]
