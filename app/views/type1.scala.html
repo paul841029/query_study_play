@@ -1,4 +1,4 @@
-@(folder: String)(step1: String)(progress: String)
+@(generate_chart: String)(step1: String)(progress: Int)
 
 @main("Query collection") {
 
@@ -31,6 +31,6 @@
     </form>
 </div>
 <progress value="@progress" max="18"></progress>
-<script>generateGraphs("@folder");selectStep1("@step1")</script>
+<script>@Html(generate_chart);selectStep1("@step1")</script>
 
 }

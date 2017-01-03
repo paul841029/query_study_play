@@ -15,13 +15,18 @@ import views.html.test;
 public class Application extends Controller {
 	
 
-    public static Result type1(String folder, String step1, String prog) {
+    public static Result type1(String folder, String step1) {
+    	
+    	String graph_type = "line";
+    	if(Integer.parseInt(folder) == 3)
+    		graph_type = "scatter";
+    	String generation_str = "generateGraphs_"+graph_type+"(\""+folder+"\")";
     	 
-        return ok(type1.render(folder,step1,prog));
+        return ok(type1.render(generation_str,step1, Integer.parseInt(folder)+1) );
     }
     
-    public static Result type2(String folder, String step1, String step2, String prog){
-    	return ok(type2.render(folder, step1, step2, prog));
+    public static Result type2(String folder, String step1, String step2){
+    	return ok(type2.render(folder, step1, step2, Integer.parseInt(folder)+1, "line" ));
     
     }
     
