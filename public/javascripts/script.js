@@ -223,7 +223,19 @@ function selectStep1(index){
 
     for (let i =0; i<index_arry.length; i++) {
         (function(){
-            $("#graph_" + index_arry[i]).attr("class", "selected_once");
+            $("#graph_" + index_arry[i]).addClass("selected_once");
+            selected_graph[+index_arry[i]]++;
+        })();
+    }
+
+}
+
+function selectStep1_p(index){
+    var index_arry = index.split("_");
+
+    for (let i =0; i<index_arry.length; i++) {
+        (function(){
+            $("#p_" + index_arry[i]).addClass("selected_once");
             selected_graph[+index_arry[i]]++;
         })();
     }
@@ -235,7 +247,7 @@ function selectStep2(index){
 
     for (let i =0; i<index_arry.length; i++) {
         (function(){
-            $("#graph_" + index_arry[i]).attr("class", "selected_twice");
+            $("#graph_" + index_arry[i]).removeClass("selected_once").attr("class", "selected_twice");
             selected_graph[+index_arry[i]] = 2;
         })();
     }
@@ -243,7 +255,20 @@ function selectStep2(index){
     second = 1;
 }
 
-function checkquery(q1, q2){
+function selectStep2_p(index){
+    var index_arry = index.split("_");
+
+    for (let i =0; i<index_arry.length; i++) {
+        (function(){
+            $("#p_" + index_arry[i]).removeClass("selected_once").attr("class", "selected_twice");
+            selected_graph[+index_arry[i]] = 2;
+        })();
+    }
+
+    second = 1;
+}
+
+function checkquery(){
 	
 	var message = "Invalid Input: "
 	
@@ -302,11 +327,15 @@ $(document).ready(function() {
         graphs_step2 += "\n\n";
         var footer = "Your queries have been recorded. The page will be redirected to the next collection.";
         
-        if(checkquery(text, text_step2) == 0) {
+        if(checkquery() == 0) {
         	event.preventDefault();
         }
         
         else {
+        	//**HARD CODED MODIFY HERE
+        	
+        	if(!cID)
+        		cID = -1;
         	myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
             
             if(!second)
@@ -320,7 +349,7 @@ $(document).ready(function() {
             if(nextpage > 17)
             	nextpage = "final";
                 
-            window.location = "/"+nextpage;
+            //window.location = "/"+nextpage;
         }
         
         

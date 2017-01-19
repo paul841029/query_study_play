@@ -10,6 +10,7 @@ import play.mvc.*;
 import views.html.type1;
 import views.html.type2;
 import views.html.test;
+import views.html.type1_pair;
 
 
 public class Application extends Controller {
@@ -50,8 +51,12 @@ public class Application extends Controller {
     	return ok(test.render(session("id")));
     }
     
-    public static Result test(String str){
-    	return ok(test.render(str));
+    public static Result test(String folder, String step1){
+    	String graph_type = "line";
+    	if(Integer.parseInt(folder) == 3)
+    		graph_type = "scatter";
+    	String generation_str = "generateGraphs_"+graph_type+"(\""+folder+"\")";
+    	return ok(type1_pair.render(generation_str,step1, Integer.parseInt(folder)+1));
     }
     
     public static Result javascriptRoutes() {

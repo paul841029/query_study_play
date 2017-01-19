@@ -37,6 +37,14 @@ nav{
 
 body { font: 12px Arial;}
 
+.pair > * {
+            display: inline-block;
+            margin-left: 10px;
+        }
+.graphs_p > * {
+            display: block;
+        }
+
 path {
     stroke: steelblue;
     stroke-width: 2;

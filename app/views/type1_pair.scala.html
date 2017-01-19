@@ -1,0 +1,57 @@
+@(generate_chart: String)(step1: String)(progress: Int)
+
+@main("Query collection") {
+
+    <div class="main">
+    <h1>Instructions</h1>
+    <h2>Please type in a query and select several graphs that match your query.</h2>
+    <h2><a href="exapmle.html">Example</a></h2>
+    <form id="form1">
+        <h3>Insert query:</h3>
+        <input type="text" id="query1" class="submissionfield"><br>
+
+    <div class="graphs_p">
+
+	    <div class="pair" id="p_0">
+		    <div id="graph_0"></div>
+		    <div id="graph_1"></div>
+	    </div>
+	
+	    <div class="pair" id="p_1">
+	        <div id="graph_2"></div>
+	        <div id="graph_3"></div>
+	    </div>
+	
+	    <div class="pair" id="p_2">
+	        <div id="graph_4"></div>
+	        <div id="graph_5"></div>
+	    </div>
+	
+	    <div class="pair" id="p_3">
+	        <div id="graph_6"></div>
+	        <div id="graph_7"></div>
+	    </div>
+	
+	    <div class="pair" id="p_4">
+	        <div id="graph_8"></div>
+	        <div id="graph_9"></div>
+	    </div>
+	
+	    <div class="pair" id="p_5">
+	        <div id="graph_10"></div>
+	        <div id="graph_11"></div>
+	    </div>
+	
+	    <div class="pair" id="p_6">
+	        <div id="graph_12"></div>
+	        <div id="graph_13"></div>
+	    </div>		
+
+	</div>
+        <input type="submit">
+    </form>
+</div>
+<progress value="@progress" max="18"></progress>
+<script>@Html(generate_chart);selectStep1_p("@step1")</script>
+
+}

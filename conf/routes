@@ -19,8 +19,7 @@ GET 	/2				        	controllers.Application.type1(f?="3", s1?="0_2_4")
 
 
 
-
+GET 	/test				        	controllers.Application.test(f?="0", s1?="0_2_4")
 POST 	/save/*collectionID/*q1/*q2						controllers.Application.saveRecord(collectionID, q1, q2)
 GET  	/id							controllers.Application.seeID()
 GET 	/javascriptRoutes 			controllers.Application.javascriptRoutes
-POST		/test/:cid/:q1/:q2			controllers.Application.saveRecord(cid: String, q1: String, q2:String)
