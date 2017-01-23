@@ -19,11 +19,17 @@ public class Application extends Controller {
     public static Result type1(String folder, String step1) {
     	
     	String graph_type = "line";
-    	if(Integer.parseInt(folder) == 3)
+    	if(Integer.parseInt(folder) == 6)
     		graph_type = "scatter";
     	String generation_str = "generateGraphs_"+graph_type+"(\""+folder+"\")";
+    	 int progress = Integer.parseInt(folder)+1;
+    	 ////**********NEED TO FIX THIS************************//
     	 
-        return ok(type1.render(generation_str,step1, Integer.parseInt(folder)+1) );
+    	 if(progress == -2)
+    		 progress = 4;
+    	 
+    	////**********NEED TO FIX THIS************************//
+        return ok(type1.render(generation_str,step1, progress) );
     }
     
     public static Result type2(String folder, String step1, String step2){
@@ -51,9 +57,9 @@ public class Application extends Controller {
     	return ok(test.render(session("id")));
     }
     
-    public static Result test(String folder, String step1){
+    public static Result pair_type1(String folder, String step1){
     	String graph_type = "line";
-    	if(Integer.parseInt(folder) == 3)
+    	if(Integer.parseInt(folder) == 6)
     		graph_type = "scatter";
     	String generation_str = "generateGraphs_"+graph_type+"(\""+folder+"\")";
     	return ok(type1_pair.render(generation_str,step1, Integer.parseInt(folder)+1));

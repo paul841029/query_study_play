@@ -2,7 +2,6 @@
  * Created by luh on 12/21/16.
  */
 
-var foo = function(){alert("hello world")};
 
 var selected_graph = [0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0,
@@ -332,10 +331,8 @@ $(document).ready(function() {
         }
         
         else {
-        	//**HARD CODED MODIFY HERE
         	
-        	if(!cID)
-        		cID = -1;
+        	
         	myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
             
             if(!second)
@@ -349,7 +346,7 @@ $(document).ready(function() {
             if(nextpage > 17)
             	nextpage = "final";
                 
-            //window.location = "/"+nextpage;
+            window.location = "/"+nextpage;
         }
         
         

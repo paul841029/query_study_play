@@ -44,6 +44,9 @@ body { font: 12px Arial;}
 .graphs_p > * {
             display: block;
         }
+.selected_once {
+	max-width : 45%;
+}        
 
 path {
     stroke: steelblue;

@@ -8,9 +8,26 @@ GET     /                           controllers.Application.start()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
+#folder -3 mean to be 3. There is a bug.
+#LINE_CHART TYPE 1
 GET     /0							controllers.Application.type1(f?="0", s1?="0_1_2")
-GET 	/1				        	controllers.Application.type2(f?="1", s1?="0_2_4", s2?="1_3")
-GET 	/2				        	controllers.Application.type1(f?="3", s1?="0_2_4")
+GET     /1							controllers.Application.type1(f?="1", s1?="0_1_2")
+GET     /2							controllers.Application.type1(f?="2", s1?="0_1_2")
+GET     /3							controllers.Application.type1(f?="-3", s1?="0_1_2")
+#folder -3 means to be 3. There is a bug to be fixed with folder 3.
+GET     /4							controllers.Application.pair_type1(f?="4", s1?="0_1_2")
+GET     /5							controllers.Application.pair_type1(f?="5", s1?="0_1_2")
+
+#LINE_CHART TYPE 2
+GET     /13							controllers.Application.type2(f?="13", s1?="0_1_2", s2?="3_4")
+GET     /14							controllers.Application.type2(f?="14", s1?="3_4_5", s2?="0_1_2")
+GET     /15							controllers.Application.type2(f?="15", s1?="3_4_5", s2?="0_1_2")
+GET     /16							controllers.Application.type2(f?="16", s1?="0_1_2", s2?="3_4")
+
+
+
+GET 	/6				        	controllers.Application.type1(f?="6", s1?="0_2_4")
+GET 	/double				        	controllers.Application.type2(f?="1", s1?="0_2_4", s2?="1_3")
 
 
 
@@ -19,7 +36,6 @@ GET 	/2				        	controllers.Application.type1(f?="3", s1?="0_2_4")
 
 
 
-GET 	/test				        	controllers.Application.test(f?="0", s1?="0_2_4")
 POST 	/save/*collectionID/*q1/*q2						controllers.Application.saveRecord(collectionID, q1, q2)
 GET  	/id							controllers.Application.seeID()
 GET 	/javascriptRoutes 			controllers.Application.javascriptRoutes
