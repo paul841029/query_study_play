@@ -325,7 +325,7 @@ function checkquery(){
 
 $(document).ready(function() {
 	
-    document.getElementById('assignmentId').value = gup('assignmentId');
+    
   
     if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE")
     {
@@ -360,7 +360,7 @@ $(document).ready(function() {
         }
         
         else {
-        	
+        	document.getElementById('assignmentId').value = gup('assignmentId');
         	if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
                 form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
             }
