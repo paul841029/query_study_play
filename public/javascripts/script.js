@@ -15,6 +15,23 @@ cID = +cID;
 var x_name;
 var y_name;
 
+function gup( name )
+{
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var tmpURL = window.location.href;
+  var results = regex.exec( tmpURL );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+
+function decode(strToDecode)
+{
+  var encoded = strToDecode;
+  return unescape(encoded.replace(/\+/g,  " "));
+}
 
 function generateGraphs_line(index) {
 
@@ -307,7 +324,18 @@ function checkquery(){
 
 
 $(document).ready(function() {
-
+	
+    document.getElementById('assignmentId').value = gup('assignmentId');
+  
+    if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE")
+    {
+  // If we're previewing, disable the button and give it a helpful message
+  document.getElementById('submitButton').disabled = true;
+  document.getElementById('submitButton').value = "You must ACCEPT the HIT before you can submit the results.";
+    } else {
+        var form = document.getElementById('mturk_form');
+   
+    }
     //submission handler
     $( "form" ).submit(function( event ) {
         var text = "Query:\xa0\xa0"+$("#query1").val()+"\n";
@@ -315,6 +343,7 @@ $(document).ready(function() {
 
         var graphs = "Index of selected graphs:\xa0\xa0 /";
         var graphs_step2 = "Index of selected graphs:\xa0\xa0 /";
+     
         for (let i = 0; i<selected_graph.length; i++) {
             if(selected_graph[i]) {
                 graphs += i + "/";
@@ -332,8 +361,12 @@ $(document).ready(function() {
         
         else {
         	
+        	if (document.referrer && ( document.referrer.indexOf('workersandbox') != -1) ) {
+                form.action = "http://workersandbox.mturk.com/mturk/externalSubmit";
+            }
+  
         	
-        	myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
+        	/*myJsRoutes.controllers.Application.saveRecord(cID, $("#query1").val(), $("#query2").val()).ajax({});
             
             if(!second)
                 alert(text+graphs+footer);
@@ -344,9 +377,9 @@ $(document).ready(function() {
             
             var nextpage = parseInt(cID) + 1;
             if(nextpage > 17)
-            	nextpage = "final";
+            	nextpage = "final";*/
                 
-            window.location = "/"+nextpage;
+            //window.location = "/"+nextpage;
         }
         
         

@@ -6,10 +6,10 @@
     <h1>Instructions</h1>
     <h2>Please type in a query that matches the selected graphs.</h2>
     <h2><a href="exapmle.html">Example</a></h2>
-    <form id="form1">
+    <form id="form1" method="POST" action="http://www.mturk.com/mturk/externalSubmit">
+        <input type="hidden" id="assignmentId" name="assignmentId" value="">
         <h3>Insert query:</h3>
         <input type="text" id="query1" class="submissionfield"><br>
-
         <div class="graphs">
             <div id="graph_0"></div>
             <div id="graph_1"></div>
@@ -27,9 +27,10 @@
             <div id="graph_13"></div>
             <div id="graph_14"></div>
         </div>
-        <input type="submit">
+        <input id="submitButton"type="submit">
     </form>
 </div>
+
 <progress value="@progress" max="18"></progress>
 <script>@Html(generate_chart);selectStep1("@step1")</script>
 
