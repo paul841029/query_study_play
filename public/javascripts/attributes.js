@@ -11,7 +11,7 @@ var z_name_0 = ["Pens", "Pencils", "Notebooks", "Calculators", "Desks",
 var index_attributes = [
     {
 	z_arry:z_name_0,
-	x:["Years", "Months", "Quaters"],
+	x:["Year", "Months", "Quaters"],
 	y:["Sales","Profit","Quantity","Revenue"]
 	}
     
