@@ -109,12 +109,12 @@ function generateGraphs_line(index) {
                 svg.append("text")
                 	.style("text-anchor","middle")
                 	.attr("transform","translate("+-(4*margin.left/5)+","+(height/2)+")rotate(-90)")
-                	.text(attributes.y[Math.floor(i/7)]);
+                	.text(attributes.y[Math.floor(i/3)%3]);
                 
                 svg.append("text")
             		.style("text-anchor","middle")
             		.attr("transform","translate("+(width/2)+","+(height+(margin.bottom)*(1/2))+")")
-            		.text(attributes.x);
+            		.text(attributes.x[Math.floor(i/3)%3]);
                 
                 svg.append("text")
                 .attr("class", "title")
