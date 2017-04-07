@@ -11,6 +11,7 @@ import views.html.type1;
 import views.html.type2;
 import views.html.test;
 import views.html.type1_pair;
+import views.html.sdl_mturk;
 
 
 public class Application extends Controller {
@@ -35,6 +36,11 @@ public class Application extends Controller {
     public static Result type2(String folder, String step1, String step2){
     	return ok(type2.render(folder, step1, step2, Integer.parseInt(folder)+1, "line" ));
     
+    }
+    
+    public static Result sdl_mturk(String folder){
+		String generation_str = "randomGraphGenerator"+"(\""+folder+"\")";
+		return ok(sdl_mturk.render(generation_str));
     }
     
     public static Result saveRecord(String collectionID, String query_s1, String query_s2) throws IOException{

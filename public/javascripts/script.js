@@ -131,6 +131,107 @@ function generateGraphs_line(index) {
 
 }
 
+function randomGraphGenerator(index) {
+
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
+	//**MODIFY HERE HARD-CODED
+	index_arr = index.split("/")
+	var margin = {top: 30, right: 20, bottom: 30, left: 50},
+    width = 600 - margin.left - margin.right,
+    height = 270 - margin.top - margin.bottom;
+// Set the ranges
+	var x = d3.scale.linear().range([0, width]);
+	var y = d3.scale.linear().range([height, 0]);
+// Define the axes
+	var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(5);
+	var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(5);
+// Define the line
+	var valueline = d3.svg.line()
+		.x(function(d) { return x(d.x); })
+		.y(function(d) { return y(d.y); });
+    
+// Adds the svg canvas
+
+
+// Adds the svg canvas
+//var data_lst = ["data1.csv", "data2.csv"]
+
+
+    for (let i = 0; i<3; i++) {
+
+        (function(){ 
+        	
+        	var svg = d3.select("#graph_"+i)
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", 
+                      "translate(" + margin.left + "," + margin.top + ")");
+        	
+
+// Get the data
+            d3.csv("/assets/data/"+"sdl_sample"+"/"+index_arr[i]+".csv", function(error, data) {
+                data.forEach(function(d) {
+                    d.x = +d.x;
+                    d.y = +d.y;
+                });
+
+                // Scale the range of the data
+                x.domain([0, d3.max(data, function(d) { return d.x; })]);
+                y.domain([0, d3.max(data, function(d) { return d.y; })]);
+
+                // Add the valueline path.
+                svg.append("path")
+                    .attr("class", "line")
+                    .attr("d", valueline(data));
+                
+                svg.selectAll("dot")
+                	.data(data)
+                	.enter().append("circle")
+                	.attr("r", 3.5)
+                	.attr("cx", function(d) { return x(d.x); })
+                	.attr("cy", function(d) { return y(d.y); });
+
+                // Add the X Axis
+                svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+
+                // Add the Y Axis
+                svg.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis);
+                
+                /*svg.append("text")
+                	.style("text-anchor","middle")
+                	.attr("transform","translate("+-(4*margin.left/5)+","+(height/2)+")rotate(-90)")
+                	.text(attributes.y[Math.floor(i/3)%3]);
+                
+                svg.append("text")
+            		.style("text-anchor","middle")
+            		.attr("transform","translate("+(width/2)+","+(height+(margin.bottom)*(1/2))+")")
+            		.text(attributes.x[Math.floor(i/3)%3]);
+                */
+                svg.append("text")
+                .attr("class", "title")
+                .attr("x", width / 2 )
+                .attr("y", 0)
+                .style("text-anchor", "middle")
+                .text("Figure "+(i+1));
+
+            });
+
+        })();
+
+    }
+
+}
+
 
 function generateGraphs_scatter(index){
 	

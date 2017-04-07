@@ -1,0 +1,33 @@
+@(generate_chart: String)
+
+@sdl("Query collection") {
+	
+<style>
+    body { font: 12px Arial;}
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+</style>
+
+    <div class="main">
+   
+        <div class="graphs_sdl">
+            <div id="graph_0"></div>
+            <div id="graph_1"></div>
+            <div id="graph_2"></div>
+        </div>
+  
+</div>
+
+<script>@Html(generate_chart)</script>
+
+}
