@@ -141,11 +141,11 @@ function randomGraphGenerator(index) {
     width = 600 - margin.left - margin.right,
     height = 270 - margin.top - margin.bottom;
 // Set the ranges
-	var x = d3.scale.linear().range([0, width]);
-	var y = d3.scale.linear().range([height, 0]);
+	var x = d3.scale.linear().rangeRound([0, width]);
+	var y = d3.scale.linear().rangeRound([height, 0]);
 // Define the axes
-	var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").ticks(5);
+	var formatxAxis = d3.format('.0f');
+	
 	var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(5);
 // Define the line
@@ -179,7 +179,8 @@ function randomGraphGenerator(index) {
                     d.x = +d.x;
                     d.y = +d.y;
                 });
-
+                var xAxis = d3.svg.axis().scale(x)
+                .orient("bottom").ticks(data.length);
                 // Scale the range of the data
                 x.domain([0, d3.max(data, function(d) { return d.x; })]);
                 y.domain([0, d3.max(data, function(d) { return d.y; })]);
