@@ -180,7 +180,7 @@ function randomGraphGenerator(index) {
                     d.y = +d.y;
                 });
                 var xAxis = d3.svg.axis().scale(x)
-                .orient("bottom").ticks(data.length);
+                .orient("bottom").ticks(5);
                 // Scale the range of the data
                 x.domain([0, d3.max(data, function(d) { return d.x; })]);
                 y.domain([0, d3.max(data, function(d) { return d.y; })]);
@@ -190,12 +190,12 @@ function randomGraphGenerator(index) {
                     .attr("class", "line")
                     .attr("d", valueline(data));
                 
-                svg.selectAll("dot")
-                	.data(data)
-                	.enter().append("circle")
-                	.attr("r", 3.5)
-                	.attr("cx", function(d) { return x(d.x); })
-                	.attr("cy", function(d) { return y(d.y); });
+//                svg.selectAll("dot")
+//                	.data(data)
+//                	.enter().append("circle")
+//                	.attr("r", 3.5)
+//                	.attr("cx", function(d) { return x(d.x); })
+//                	.attr("cy", function(d) { return y(d.y); });
 
                 // Add the X Axis
                 svg.append("g")

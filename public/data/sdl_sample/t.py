@@ -25,8 +25,8 @@ def write_to_file(data_list):
 	result += "\n"		
 	return result[1:]			
 
-f = open("patterns.txt","w")
-for i in range(24):
+f = open("patterns_0525_1.txt","w")
+for i in range(36,39):
 	csvfile = open(str(i)+".csv","wb")
 	spamwriter = csv.writer(csvfile, delimiter=',',quotechar=',', quoting=csv.QUOTE_MINIMAL)
 	spamwriter.writerow(['x','y'])
@@ -34,7 +34,7 @@ for i in range(24):
 	y = []
 	slope=[3,18,0,-3,-18,99]
 	latest_y = 0
-	seq_len = random.randint(4,8)
+	seq_len = random.randint(12,21)
 
 	for s in range(0,seq_len): 
 		index = random.randint(0,5)

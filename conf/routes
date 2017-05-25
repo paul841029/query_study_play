@@ -35,6 +35,13 @@ GET     /sdl5						controllers.Application.sdl_mturk(f?="15/16/17")
 GET     /sdl6						controllers.Application.sdl_mturk(f?="18/19/20")
 GET     /sdl7						controllers.Application.sdl_mturk(f?="21/22/23")
 
+GET     /sdl8						controllers.Application.sdl_mturk(f?="24/25/26")
+GET     /sdl9						controllers.Application.sdl_mturk(f?="27/28/29")
+GET     /sdl10						controllers.Application.sdl_mturk(f?="30/31/32")
+GET     /sdl11						controllers.Application.sdl_mturk(f?="33/34/35")
+GET     /sdl12						controllers.Application.sdl_mturk(f?="36/37/38")
+
+
 
 GET 	/6				        	controllers.Application.type1(f?="6", s1?="0_2_4")
 GET 	/double				        	controllers.Application.type2(f?="1", s1?="0_2_4", s2?="1_3")
