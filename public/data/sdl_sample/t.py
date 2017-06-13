@@ -1,6 +1,7 @@
 import csv
 import random
 import numpy as np
+import copy
 
 def write_to_file(data_list):
 	result = ""
@@ -57,19 +58,25 @@ def main():
 		print i,
 		print y
 
-y1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-y2 = (np.sin(np.linspace(-10,10,100))+2).tolist()
+y1 = np.zeros(50).tolist()
+y2 = (np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])+10).tolist()
 point_map = [{'x':range(len(y1)), 'y':y1}, {'x':range(len(y2)), 'y':y2}]        
 def tmp():
-	for i in range(3,15):
-		csvfile = open('tmp/'+str(i)+".csv","wb")
+	for i in range(0,3):
+		csvfile = open('../20/'+str(i)+".csv","wb")
 		spamwriter = csv.writer(csvfile, delimiter=',',quotechar=',', quoting=csv.QUOTE_MINIMAL)
 		spamwriter.writerow(['x','y'])
-		index = random.randint(0,1)
-		x = point_map[index]['x']
-		y = point_map[index]['y']
-		for k in range(len(y)):
-			spamwriter.writerow([x[k],y[k]])
+		
+		length = random.sample([1,2],1)
+		print(length)
+		indicies = random.sample(range(3,40,2), length[0])
+		yy = copy.deepcopy(y1)
+		for i in indicies:
+			yy[i] = 10
+		x = range(len(yy))	
+		
+		for k in range(len(yy)):
+			spamwriter.writerow([x[k],yy[k]])
 		csvfile.close()
 tmp()		
 #Up,up,Down,down,appear,disapear,zero
