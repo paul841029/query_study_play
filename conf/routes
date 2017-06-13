@@ -19,6 +19,7 @@ GET     /4							controllers.Application.pair_type1(f?="4", s1?="0_1_2")
 GET     /5							controllers.Application.pair_type1(f?="5", s1?="0_1_2")
 GET     /17							controllers.Application.type1(f?="17", s1?="0_1_2")
 GET     /18							controllers.Application.type1(f?="18", s1?="0_1_2")
+GET     /19							controllers.Application.type1(f?="19", s1?="0_1_2")
 
 #LINE_CHART TYPE 2
 GET     /13							controllers.Application.type2(f?="13", s1?="0_1_2", s2?="3_4")

@@ -51,7 +51,7 @@ function generateGraphs_line(index) {
 //var parseDate = d3.time.format("%d-%b-%y").parse;
 
 // Set the ranges
-    var x = d3.time.scale().range([0, width]);
+    var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 
 // Define the axes
@@ -59,7 +59,7 @@ function generateGraphs_line(index) {
         .orient("bottom").ticks(5);
 
     var yAxis = d3.svg.axis().scale(y)
-        .orient("left").ticks(5);
+        .orient("left").ticks(5).tickFormat(d3.format("d"));
 
 // Define the line
     var valueline = d3.svg.line()
@@ -109,19 +109,21 @@ function generateGraphs_line(index) {
                 svg.append("text")
                 	.style("text-anchor","middle")
                 	.attr("transform","translate("+-(4*margin.left/5)+","+(height/2)+")rotate(-90)")
-                	.text(attributes.y[Math.floor(i/3)%3]);
+//                	.text(attributes.y[Math.floor(i/3)%3]);
+                	.text('y');
                 
                 svg.append("text")
             		.style("text-anchor","middle")
-            		.attr("transform","translate("+(width/2)+","+(height+(margin.bottom)*(1/2))+")")
-            		.text(attributes.x[Math.floor(i/3)%3]);
+            		.attr("transform","translate("+(width/2)+","+(height+(margin.bottom))+")")
+//            		.text(attributes.x[Math.floor(i/3)%3]);
+                	.text('x');
                 
                 svg.append("text")
                 .attr("class", "title")
                 .attr("x", width / 2 )
                 .attr("y", 0)
                 .style("text-anchor", "middle")
-                .text(attributes.z_arry[i]);
+//                .text(attributes.z_arry[i]);
 
             });
 

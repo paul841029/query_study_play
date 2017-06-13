@@ -14,7 +14,7 @@ input[type=submit] {
     width: 30em;  height: 2em;
 }
 
-.axis text { display: none; }
+/*.axis text { display: none; }*/
 .title {
     font-weight: bold;
 }
