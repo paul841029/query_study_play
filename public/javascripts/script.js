@@ -148,8 +148,6 @@ function randomGraphGenerator(index) {
 // Define the axes
 	var formatxAxis = d3.format('.0f');
 	
-	var yAxis = d3.svg.axis().scale(y)
-    .orient("left").ticks(5);
 // Define the line
 	var valueline = d3.svg.line()
 		.x(function(d) { return x(d.x); })
@@ -176,13 +174,17 @@ function randomGraphGenerator(index) {
         	
 
 // Get the data
+        	len = 0
             d3.csv("/assets/data/"+"sdl_sample"+"/"+index_arr[i]+".csv", function(error, data) {
                 data.forEach(function(d) {
                     d.x = +d.x;
                     d.y = +d.y;
+                    len = len + 1
                 });
                 var xAxis = d3.svg.axis().scale(x)
-                .orient("bottom").ticks(5);
+                .orient("bottom").ticks(5).tickFormat(d3.format("d"));
+                var yAxis = d3.svg.axis().scale(y)
+                .orient("left").ticks(5).tickFormat(d3.format("d"));
                 // Scale the range of the data
                 x.domain([0, d3.max(data, function(d) { return d.x; })]);
                 y.domain([0, d3.max(data, function(d) { return d.y; })]);
