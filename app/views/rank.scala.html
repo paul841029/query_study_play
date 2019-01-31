@@ -52,20 +52,57 @@
 
     <br>
 
+
     <div class="pure-g">
         <div class="pure-u-1-8"></div>
         <div class="pure-u-9-24"></div>
         <div class="pure-u-9-24" align="right">
-            <button type="submit" class="button-xlarge pure-button">Sign in</button>
+            <button type="submit" id="submit" class="button-xlarge pure-button">Submit</button>
         </div>
         <div class="pure-u-1-8"></div>
     </div>
-
     <br>
     <br>
 
 
+    <form id = "endForm" action="" method="POST" hidden>
+        <input type="hidden" id="user-input" value="" name="user-input"/>
+        <input type="hidden" id="assignmentId" value="" name="assignmentId"/>
+        <input type="hidden" id="workerId" value="" name="workerId"/>
+        <input type="hidden" id="hitId" value="" name="hitId"/>
+    </form>
+  
 
+
+
+    <script>
+    
+    var queryDict = {};
+  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+  //Using extracted url parameters to populate form
+    $("#endForm").attr("action", queryDict["host"]);
+    $('#assignmentId').val(queryDict["assignmentId"]);
+    $('#workerId').val(queryDict["workerId"]);
+    $('#hitId').val(queryDict["hitId"]);
+
+    (@charts).forEach(element => {
+        $('#endForm').append('<input type="text" name="'+element+'" id="'+'input-'+element+'"/>');
+    })
+
+  //Sets trigger for confirmation message.
+  $('#submit').click(function(){
+    if(confirm("Sure to submit to responses?")) {
+        (@charts).forEach(element => {
+            $('#input-'+element).val(
+                $( "#"+element+" option:selected" ).text()
+            );
+        });
+        $("#endForm").submit();
+    } 
+  });
+    
+    
+    </script>
 
 
 
