@@ -1,0 +1,7 @@
+26	Down/stable/Down/Down/stable/stable/down/Down/Down/stable/stable/Down/disappear/appear/disappear/appear/down
+29	Down/Down/Up/down/down/stable/Up/stable/stable/stable/down/Down/Up/Down/down/disappear/appear/Down
+32	up/up/up/down/Down/up/down/down/stable/disappear/stable
+35	Down/stable/stable/up/Down/Up/Down/disappear/stable/appear/stable/down/stable/down/down/Up
+36	up/up/Down/Up/up/stable/Down/up/up/Up/up/stable/up/stable/stable/down/down/disappear
+37	Up/Down/stable/Up/Down/Down/disappear/appear/up/Up/Up/Up/Up/down/Down/stable
+38	zero/stable/appear/up/up/up/stable/up/stable/stable/stable/up
