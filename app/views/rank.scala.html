@@ -26,22 +26,24 @@
             <div class="pure-u-9-24">
                 <form class="pure-form">
                     <select class="pure-input-2-3" id=@charts(g*2+0)>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </form>
             </div>
             <div class="pure-u-9-24">
                 <form class="pure-form">
                     <select class="pure-input-2-3" id=@charts(g*2+1)>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </form>
             </div>
@@ -66,9 +68,9 @@
 
 
     <form id = "endForm" action="" method="POST" hidden>
-        <input type="hidden" id="assignmentId" value="" name="assignmentId"/>
-        <input type="hidden" id="workerId" value="" name="workerId"/>
-        <input type="hidden" id="hitId" value="" name="hitId"/>
+        <input id="assignmentId" value="" name="assignmentId"/>
+        <input id="workerId" value="" name="workerId"/>
+        <input id="hitId" value="" name="hitId"/>
     </form>
   
 
@@ -85,19 +87,37 @@
     $('#hitId').val(queryDict["hitId"]);
 
     (@charts).forEach(element => {
-        $('#endForm').append('<input type="text" name="'+element+'" id="'+'input-'+element+'"/>');
+        $('#endForm').append('<input type="text" name="'+element+'" value="" id="'+'input-'+element+'"/>');
     })
 
   //Sets trigger for confirmation message.
   $('#submit').click(function(){
-    if(confirm("Sure to submit to responses?")) {
+    if(confirm("Sure to submit responses?")) {
+ 
         (@charts).forEach(element => {
             $('#input-'+element).val(
-                $( "#"+element+" option:selected" ).text()
+                $( "#"+element).val()
             );
         });
-        $("#endForm").submit();
-    } 
+        if (sanityCheck()) {
+            $("#endForm").submit();
+            // console.log("Pass")
+        }
+        else {
+            alert("Please rank every chart.\nReponses not submitted.")
+        }
+    }
+    
+    function sanityCheck() {
+        var pass = true;
+        (@charts).forEach(element => {
+            pass = pass && !($( '#input-'+element).val()==="")
+        });
+        return pass
+    }
+
+ 
+
   });
     
     
