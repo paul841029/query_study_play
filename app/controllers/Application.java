@@ -1,8 +1,10 @@
 package controllers;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
+
 
 import models.Record;
 import play.*;
@@ -12,10 +14,14 @@ import views.html.type2;
 import views.html.test;
 import views.html.type1_pair;
 import views.html.sdl_mturk;
+import views.html.rank;
+import org.json.*;
+import org.apache.commons.io.FileUtils;
+
 
 
 public class Application extends Controller {
-	
+
 
     public static Result type1(String folder, String step1) {
     	
@@ -52,6 +58,26 @@ public class Application extends Controller {
     	
     	return ok();
     }
+
+    public static Result rankPage(String folder) throws IOException {
+		List<String> charts = new ArrayList<String>();
+
+		File f = Play.application().getFile("/conf/chart_ranking.json");
+		String str = FileUtils.readFileToString(f);
+		System.out.println(str);
+		JSONObject json = new JSONObject(str);
+		String stmt = json.getJSONObject(folder).getString("stmt");
+		JSONArray arr = json.getJSONObject(folder).getJSONArray("charts");
+
+		for (int i = 0; i < arr.length(); i++) {
+			charts.add(arr.getString(i));
+		}
+
+
+		return ok(
+    			rank.render(folder,stmt,charts)
+		);
+	}
     
     public static Result start() throws IOException{
     	String id_str = Integer.toString(models.Record.getID());
@@ -80,5 +106,11 @@ public class Application extends Controller {
             )
         );
     }
+
+//	public static Result sdl_mturk(String folder){
+//
+//		String generation_str = "randomGraphGenerator"+"(\""+folder+"\")";
+//		return ok(sdl_mturk.render(generation_str));
+//	}
 
 }

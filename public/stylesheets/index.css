@@ -93,3 +93,27 @@ progress{
 #progress_text{
 	font-size:20px;
 }
+
+img {
+    max-width: 70%;
+    max-height: 100%;
+}
+
+
+
+ .button-xsmall {
+     font-size: 70%;
+ }
+
+.button-small {
+    font-size: 85%;
+}
+
+.button-large {
+    font-size: 110%;
+}
+
+.button-xlarge {
+    font-size: 200%;
+}
+

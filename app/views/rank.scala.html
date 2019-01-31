@@ -1,0 +1,76 @@
+@(bucket_id: String)(stmt: String)(charts: List[String])
+
+@main("Ranking") {
+
+
+
+    <div class="pure-g">
+        <div class="pure-u-1-8"></div>
+        <div class="pure-u-3-4"><h1>@(stmt)</h1></div>
+        <div class="pure-u-1-8"></div>
+    </div>
+
+
+    @for(g <- Arrays.asList(0,1,2,3,4)) {
+
+        <div class="pure-g">
+            <div class="pure-u-1-8"></div>
+            <div class="pure-u-9-24"><img src="@routes.Assets.at("user_study_charts/data/images/"+charts(g*2+0)+".png")"/></div>
+            <div class="pure-u-9-24"><img src="@routes.Assets.at("user_study_charts/data/images/"+charts(g*2+1)+".png")"/></div>
+            <div class="pure-u-1-8"></div>
+        </div>
+
+
+        <div class="pure-g">
+            <div class="pure-u-1-8"></div>
+            <div class="pure-u-9-24">
+                <form class="pure-form">
+                    <select class="pure-input-2-3" id=@charts(g*2+0)>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </form>
+            </div>
+            <div class="pure-u-9-24">
+                <form class="pure-form">
+                    <select class="pure-input-2-3" id=@charts(g*2+1)>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </form>
+            </div>
+            <div class="pure-u-1-8"></div>
+        </div>
+
+    }
+
+    <br>
+
+    <div class="pure-g">
+        <div class="pure-u-1-8"></div>
+        <div class="pure-u-9-24"></div>
+        <div class="pure-u-9-24" align="right">
+            <button type="submit" class="button-xlarge pure-button">Sign in</button>
+        </div>
+        <div class="pure-u-1-8"></div>
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+
+
+
+
+
+
+}

@@ -44,6 +44,8 @@ GET     /sdl10						controllers.Application.sdl_mturk(f?="30/31/32")
 GET     /sdl11						controllers.Application.sdl_mturk(f?="33/34/35")
 GET     /sdl12						controllers.Application.sdl_mturk(f?="36/37/38")
 
+GET     /rank/*idx						controllers.Application.rankPage(idx)
+
 
 
 GET 	/6				        	controllers.Application.type1(f?="6", s1?="0_2_4")
