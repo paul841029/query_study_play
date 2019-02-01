@@ -1,4 +1,4 @@
-@(bucket_id: String)(stmt: String)(charts: List[String])
+@(bucketId: String)(stmt: String)(charts: List[String])
 
 @main("Ranking") {
 
@@ -99,7 +99,7 @@
         <input id="assignmentId" value="" name="assignmentId"/>
         <input id="workerId" value="" name="workerId"/>
         <input id="hitId" value="" name="hitId"/>
-        <input id="bucket_id" value="" name="bucket_id"/>
+        <input id="bucketId" value="" name="bucketId"/>
     </form>
 
     <script>
@@ -111,7 +111,7 @@
     $('#assignmentId').val(queryDict["assignmentId"]);
     $('#workerId').val(queryDict["workerId"]);
     $('#hitId').val(queryDict["hitId"]);
-    $('#bucket_id').val(@bucket_id);
+    $('#bucketId').val(@bucketId);
 
     (@charts).forEach(element => {
         $('#endForm').append('<input type="text" name="'+element+'" value="" id="'+'input-'+element+'"/>');
