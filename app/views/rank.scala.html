@@ -6,7 +6,35 @@
 
     <div class="pure-g">
         <div class="pure-u-1-8"></div>
-        <div class="pure-u-3-4"><h1>@(stmt)</h1></div>
+        <div class="pure-u-3-4">
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header"><h2>Title</h2></div>
+                        <div class="card-body text-dark">
+                          <h3 class="card-title"><strong>Instructions</strong></h3>
+                          <h4 class="card-text">[Placeholder]</h4>
+                        </div>
+                      </div>
+
+        </div>
+        <div class="pure-u-1-8"></div>
+    </div>
+
+    
+
+    <div class="pure-g">
+        <div class="pure-u-1-8"></div>
+        <div class="pure-u-3-4">
+                <div class="card">
+                        <div class="card-header">
+                                <h3><strong>Statement</strong><h3>
+                        </div>
+                        <div class="card-body">
+                          <blockquote class="blockquote mb-0">
+                            <h4>@stmt</h4>
+                          </blockquote>
+                        </div>
+                      </div>
+        </div>
         <div class="pure-u-1-8"></div>
     </div>
 
@@ -23,58 +51,56 @@
 
         <div class="pure-g">
             <div class="pure-u-1-8"></div>
-            <div class="pure-u-9-24">
-                <form class="pure-form">
-                    <select class="pure-input-2-3" id=@charts(g*2+0)>
-                        <option value=""></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </form>
+            <div class="pure-u-1-24"></div>
+            <div class="pure-u-1-6">
+                    <div class="form-group">
+                            <select class="form-control" id=@charts(g*2+0)>
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                            </select>
+                    </div>
             </div>
-            <div class="pure-u-9-24">
-                <form class="pure-form">
-                    <select class="pure-input-2-3" id=@charts(g*2+1)>
-                        <option value=""></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </form>
+            <div class="pure-u-1-6"></div>
+            <div class="pure-u-1-24"></div>
+            <div class="pure-u-1-6">
+                    <div class="form-group">
+                            <select class="form-control" id=@charts(g*2+1)>
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                            </select>
+                    </div>
             </div>
+            <div class="pure-u-1-6"></div>
             <div class="pure-u-1-8"></div>
         </div>
 
     }
-
     <br>
-
-
     <div class="pure-g">
         <div class="pure-u-1-8"></div>
         <div class="pure-u-9-24"></div>
         <div class="pure-u-9-24" align="right">
-            <button type="submit" id="submit" class="button-xlarge pure-button">Submit</button>
+            <button type="submit" id="submit" class="btn btn-secondary btn-lg">Submit</button>
         </div>
         <div class="pure-u-1-8"></div>
     </div>
     <br>
     <br>
 
-
     <form id = "endForm" action="" method="POST" hidden>
         <input id="assignmentId" value="" name="assignmentId"/>
         <input id="workerId" value="" name="workerId"/>
         <input id="hitId" value="" name="hitId"/>
+        <input id="bucket_id" value="" name="bucket_id"/>
     </form>
-  
-
-
 
     <script>
     
@@ -85,6 +111,7 @@
     $('#assignmentId').val(queryDict["assignmentId"]);
     $('#workerId').val(queryDict["workerId"]);
     $('#hitId').val(queryDict["hitId"]);
+    $('#bucket_id').val(@bucket_id);
 
     (@charts).forEach(element => {
         $('#endForm').append('<input type="text" name="'+element+'" value="" id="'+'input-'+element+'"/>');
@@ -104,7 +131,7 @@
             // console.log("Pass")
         }
         else {
-            alert("Please rank every chart.\nReponses not submitted.")
+            alert("Please rank every chart.\nReponses are not submitted.")
         }
     }
     
@@ -118,15 +145,9 @@
 
  
 
-  });
-    
+  });    
     
     </script>
-
-
-
-
-
 
 
 }
